@@ -1,6 +1,7 @@
 CC = gcc
 AR = ar
 FLAGS = -Wall -g
+PICFLAGS = -fPIC
 OBJECT_BASICLOOP = basicClassification.o advancedClassificationLoop.o
 OBJECT_BASICRECURSION = basicClassification.o advancedClassificationRecursion.o
 
@@ -21,10 +22,10 @@ libclassrec.a: $(OBJECT_BASICRECURSION)
 	$(AR) -rsc libclassrec.a $(OBJECT_BASICRECURSION)
 
 libclassloops.so: $(OBJECT_BASICLOOP)
-	$(CC) -shared -o libclassloops.so $(OBJECT_BASICLOOP)
+	$(CC) -shared $(PICFLAGS) -o libclassloops.so $(OBJECT_BASICLOOP)
 
 libclassrec.so: $(OBJECT_BASICRECURSION)
-	$(CC) -shared -o libclassrec.so $(OBJECT_BASICRECURSION)
+	$(CC) -shared $(PICFLAGS) -o libclassrec.so $(OBJECT_BASICRECURSION)
 
 mains: main.o libclassrec.a
 	$(CC) $(FLAGS) -o mains main.o libclassrec.a -lm
@@ -39,13 +40,13 @@ main.o: main.c NumClass.h
 	$(CC) $(FLAGS) -c main.c
 
 basicClassification.o: basicClassification.c
-	$(CC) $(FLAGS) -c basicClassification.c -lm
+	$(CC) $(FLAGS) $(PICFLAGS) -c basicClassification.c -lm
 
 advancedClassificationLoop.o: advancedClassificationLoop.c
-	$(CC) $(FLAGS) -c advancedClassificationLoop.c -lm
+	$(CC) $(FLAGS) $(PICFLAGS) -c advancedClassificationLoop.c -lm
 
 advancedClassificationRec.o: advancedClassificationRec.c
-	$(CC) $(FLAGS) -c advancedClassificationRec.c
+	$(CC) $(FLAGS) $(PICFLAGS) -c advancedClassificationRec.c
 
 clean:
 	rm -f *.o *.a *.so mains maindloop maindrec
