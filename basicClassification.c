@@ -4,17 +4,19 @@
 
 
 
-int isPrime(int num){
-
-    if(num ==2 || num<=0){
+int isPrime(int num) {
+    if (num == 1 || num == 2) {
+        return TRUE;
+    }
+    if (num % 2 == 0) {         //Checking if number divisible by 2
         return FALSE;
     }
-    for(int i=2;i<num;i++){
-        if(num%i==0){
+    for (int i = 3; i <= sqrt(num); ++i) {      //Looping on all number in range [3,sqrt(number)]
+        if (num % i == 0) {         //Checking if the number is divisible by any number of this range then will return False
             return FALSE;
         }
     }
-    return TRUE;
+    return TRUE;        //Otherwise, return True
 }
 
 int isStrong(int num){
