@@ -24,7 +24,7 @@ int isStrong(int num){
     int sum=0;
     int tmp=num;
 
-    while(tmp>0){
+    while(tmp>0){         //taking each number and getting the factorial for it
         int fac= tmp%10;
         int facNum=1;
         
@@ -32,7 +32,7 @@ int isStrong(int num){
             facNum*=fac;
             fac-=1;
         }
-        sum+=facNum;
+        sum+=facNum;  //after we did the factorial we adding the total numbers in sum
         tmp/=10;
     }
     if(num==sum){

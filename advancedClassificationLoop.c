@@ -48,7 +48,7 @@ int isPalindrome(int num){
   
     int tmp = num; 
   
-    while (tmp != 0) { 
+    while (tmp != 0) { //each time we take a digit and put it in num2 in the oppesite side where it was like a mirror
         int digit = tmp % 10; 
         num2 = num2 * 10 + digit; 
         tmp /= 10; 

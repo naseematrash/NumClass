@@ -39,7 +39,7 @@ if(num == 0){
 
 int isPalindrome(int num){
     int num2=0;
-    num2=flipping(num,num2);
+    num2=flipping(num,num2);  //using the function flipping who is checking the requirment by recurstion
     
     if(num == num2){
         return 1;
@@ -55,14 +55,14 @@ if (num == 0){
 return FALSE;
 }
 else{
-return power(num % 10, counter) + Armstrong(num / 10, counter);
+return power(num % 10, counter) + Armstrong(num / 10, counter);  //each time we take a digit from the whole number and we power it to the length of our whole number (digit count)
 }
 }
 
 
 int isArmstrong(int num){
 
-int counter = numlength(num);
+int counter = numlength(num); //using the function numlength counting the number length recusivly
 
 if(Armstrong(num,counter)== num){
     return TRUE;
